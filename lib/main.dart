@@ -1,3 +1,5 @@
+import 'package:dokan_ecommerce/constants/theme.dart';
+import 'package:dokan_ecommerce/screens/auth_ui/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Dokan E-Commerce',
-      home: Text('Dokan'),
+      theme: themeData,
+      home: Welcome(),
     );
   }
 }

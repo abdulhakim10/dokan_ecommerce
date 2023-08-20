@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+import 'package:dokan_ecommerce/constants/constants.dart';
 import 'package:dokan_ecommerce/constants/routes.dart';
+import 'package:dokan_ecommerce/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:dokan_ecommerce/screens/home/home.dart';
 import 'package:dokan_ecommerce/widgets/primary_button/primary_button.dart';
 import 'package:dokan_ecommerce/widgets/top_titles/top_titles.dart';
@@ -13,6 +16,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
   bool isShowPassword = true;
   @override
   Widget build(BuildContext context) {
@@ -26,6 +32,7 @@ class _LoginState extends State<Login> {
                 subtitle: 'Welcome back to E-Commerce app', title: 'Login'),
             const SizedBox(height: 46),
             TextFormField(
+              controller: email,
               decoration: const InputDecoration(
                   hintText: 'Email',
                   prefixIcon: Icon(
@@ -34,6 +41,7 @@ class _LoginState extends State<Login> {
             ),
             const SizedBox(height: 12),
             TextFormField(
+              controller: password,
               obscureText: isShowPassword,
               decoration: InputDecoration(
                 hintText: 'Password',
@@ -56,7 +64,19 @@ class _LoginState extends State<Login> {
               ),
             ),
             const SizedBox(height: 36),
-            PrimaryButton(onPressed: () {}, title: 'Login'),
+            PrimaryButton(
+                onPressed: () async {
+                  bool isValidated = loginVaildation(email.text, password.text);
+                  if (isValidated) {
+                    bool isLogined = await FirebaseAuthHelper.instance
+                        .login(email.text, password.text, context);
+                    if (isLogined) {
+                      Routes.instance.pushAndRemoveUntil(
+                          widget: const Home(), context: context);
+                    }
+                  }
+                },
+                title: 'Login'),
             const SizedBox(height: 24),
             const Center(child: Text("Don't have an account?")),
             const SizedBox(height: 12),

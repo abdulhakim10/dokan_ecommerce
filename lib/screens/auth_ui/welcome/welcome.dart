@@ -63,7 +63,7 @@ class Welcome extends StatelessWidget {
                   Routes.instance
                       .push(widget: const SignUp(), context: context);
                 },
-                title: 'Sign Up')
+                title: 'Create Account')
           ],
         ),
       ),

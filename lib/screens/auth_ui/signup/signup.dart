@@ -1,3 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:dokan_ecommerce/constants/constants.dart';
+import 'package:dokan_ecommerce/constants/routes.dart';
+import 'package:dokan_ecommerce/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
+import 'package:dokan_ecommerce/screens/home/home.dart';
 import 'package:dokan_ecommerce/widgets/primary_button/primary_button.dart';
 import 'package:dokan_ecommerce/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +17,10 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
   bool isShowPassword = true;
   @override
   Widget build(BuildContext context) {
@@ -25,6 +35,7 @@ class _SignUpState extends State<SignUp> {
                   subtitle: 'Welcome back to Dokan', title: 'Create Account'),
               const SizedBox(height: 46),
               TextFormField(
+                controller: name,
                 decoration: const InputDecoration(
                     hintText: 'Name',
                     prefixIcon: Icon(
@@ -33,6 +44,7 @@ class _SignUpState extends State<SignUp> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: email,
                 decoration: const InputDecoration(
                     hintText: 'Email',
                     prefixIcon: Icon(
@@ -41,6 +53,7 @@ class _SignUpState extends State<SignUp> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: phone,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                     hintText: 'Phone',
@@ -50,6 +63,7 @@ class _SignUpState extends State<SignUp> {
               ),
               const SizedBox(height: 12),
               TextFormField(
+                controller: password,
                 obscureText: isShowPassword,
                 decoration: InputDecoration(
                   hintText: 'Create Password',
@@ -72,14 +86,27 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(height: 12),
-              PrimaryButton(onPressed: () {}, title: 'Sign Up'),
+              PrimaryButton(
+                  onPressed: () async {
+                    bool isValidated = signUpValidation(
+                        email.text, password.text, name.text, phone.text);
+                    if (isValidated) {
+                      bool isCreated = await FirebaseAuthHelper.instance
+                          .signUp(email.text, password.text, context);
+                      if (isCreated) {
+                        Routes.instance.pushAndRemoveUntil(
+                            widget: const Home(), context: context);
+                      }
+                    }
+                  },
+                  title: 'Sign Up'),
               const SizedBox(height: 24),
               const Center(child: Text("Already have an account?")),
               const SizedBox(height: 12),
               Center(
                 child: CupertinoButton(
                     child: Text(
-                      'Sign Up',
+                      'Login',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () {

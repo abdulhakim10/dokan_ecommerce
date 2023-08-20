@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
             const SizedBox(height: 36),
             PrimaryButton(
                 onPressed: () async {
-                  bool isValidated = loginVaildation(email.text, password.text);
+                  bool isValidated = loginValidation(email.text, password.text);
                   if (isValidated) {
                     bool isLogined = await FirebaseAuthHelper.instance
                         .login(email.text, password.text, context);

@@ -71,7 +71,8 @@ String getMessageFromErrorCode(String errorCode) {
   }
 }
 
-bool loginVaildation(String email, String password) {
+// login validation
+bool loginValidation(String email, String password) {
   if (email.isEmpty && password.isEmpty) {
     showMessage("Both Fields are empty");
     return false;
@@ -79,7 +80,30 @@ bool loginVaildation(String email, String password) {
     showMessage("Email is Empty");
     return false;
   } else if (password.isEmpty) {
+    showMessage("Password is Empty");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// sign up validation
+bool signUpValidation(
+    String email, String password, String name, String phone) {
+  if (email.isEmpty && password.isEmpty && name.isEmpty && phone.isEmpty) {
+    showMessage("All Fields are empty");
+    return false;
+  } else if (email.isEmpty) {
     showMessage("Email is Empty");
+    return false;
+  } else if (password.isEmpty) {
+    showMessage("Password is Empty");
+    return false;
+  } else if (name.isEmpty) {
+    showMessage("Name is Empty");
+    return false;
+  } else if (phone.isEmpty) {
+    showMessage("Phone is Empty");
     return false;
   } else {
     return true;

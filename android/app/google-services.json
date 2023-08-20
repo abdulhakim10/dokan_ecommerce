@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "313408024080",
+    "project_id": "dokan-e-commerce-f27bd",
+    "storage_bucket": "dokan-e-commerce-f27bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313408024080:android:fae5a1377d622c2eaee495",
+        "android_client_info": {
+          "package_name": "com.example.dokan_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313408024080-o5cc6dndrcdp70ndllmhdgf65rhvvml8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOErJIqM_jfaZr6b_V4wNJIvBSgEDzzuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313408024080-o5cc6dndrcdp70ndllmhdgf65rhvvml8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

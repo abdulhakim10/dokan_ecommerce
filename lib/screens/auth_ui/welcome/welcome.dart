@@ -1,6 +1,7 @@
 import 'package:dokan_ecommerce/constants/assets_images.dart';
 import 'package:dokan_ecommerce/constants/routes.dart';
-import 'package:dokan_ecommerce/screens/auth_ui/welcome/login/login.dart';
+import 'package:dokan_ecommerce/screens/auth_ui/login/login.dart';
+import 'package:dokan_ecommerce/screens/auth_ui/signup/signup.dart';
 import 'package:dokan_ecommerce/widgets/primary_button/primary_button.dart';
 import 'package:dokan_ecommerce/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,7 +58,12 @@ class Welcome extends StatelessWidget {
                 },
                 title: 'Login'),
             const SizedBox(height: 18),
-            PrimaryButton(onPressed: () {}, title: 'Sign Up')
+            PrimaryButton(
+                onPressed: () {
+                  Routes.instance
+                      .push(widget: const SignUp(), context: context);
+                },
+                title: 'Sign Up')
           ],
         ),
       ),

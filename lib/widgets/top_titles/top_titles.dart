@@ -29,7 +29,7 @@ class TopTitles extends StatelessWidget {
         Text(
           subtitle,
           style: const TextStyle(
-              fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
+              fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black),
         ),
       ],
     );

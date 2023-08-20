@@ -1,3 +1,5 @@
+import 'package:dokan_ecommerce/constants/routes.dart';
+import 'package:dokan_ecommerce/screens/home/home.dart';
 import 'package:dokan_ecommerce/widgets/primary_button/primary_button.dart';
 import 'package:dokan_ecommerce/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
@@ -44,10 +46,12 @@ class _LoginState extends State<Login> {
                       isShowPassword = !isShowPassword;
                     });
                   },
-                  child: const Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
-                  ),
+                  child: isShowPassword == true
+                      ? const Icon(
+                          Icons.visibility,
+                          color: Colors.grey,
+                        )
+                      : const Icon(Icons.visibility_off),
                 ),
               ),
             ),
@@ -62,7 +66,10 @@ class _LoginState extends State<Login> {
                     'Create an account',
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Routes.instance.pushAndRemoveUntil(
+                        widget: const Home(), context: context);
+                  }),
             ),
           ],
         ),

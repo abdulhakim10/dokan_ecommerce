@@ -9,6 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        primary: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -64,6 +65,7 @@ class Home extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: GridView.builder(
+                  padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   itemCount: bestProducts.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

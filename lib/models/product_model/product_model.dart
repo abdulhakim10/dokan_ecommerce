@@ -28,7 +28,7 @@ class ProductModel {
         description: json["description"],
         image: json["image"],
         isFavourite: false,
-        price: json["price"],
+        price: json['price'],
         status: json["status"],
       );
   Map<String, dynamic> toJson() => {

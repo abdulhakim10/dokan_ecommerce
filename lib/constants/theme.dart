@@ -26,6 +26,13 @@ ThemeData themeData = ThemeData(
       textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
     ),
   ),
+  primarySwatch: Colors.red,
+  canvasColor: Colors.red,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.white,
+    elevation: 0.0,
+    iconTheme: IconThemeData(color: Colors.black),
+  ),
 );
 
 OutlineInputBorder outlineInputBorder = const OutlineInputBorder(

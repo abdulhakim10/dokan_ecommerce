@@ -8,18 +8,19 @@ class CategoryModel {
   CategoryModel({
     required this.id,
     required this.image,
-// required this.email,
+    required this.name,
   });
   String id;
   String image;
-// String email;
+  String name;
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-        id: json["id"], image: json["image"],
-// email: json["email"],
+        id: json["id"],
+        image: json["image"],
+        name: json["name"],
       );
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
-// "email": email,
+        "name": name,
       };
 }
